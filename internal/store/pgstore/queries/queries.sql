@@ -42,3 +42,11 @@ SET
 WHERE
     id = $1
 RETURNING reaction_count;
+
+-- name: RemoveReactionFromMessage :one
+UPDATE messages
+SET
+    reaction_count = reaction_count - 1
+WHERE
+    id = $1
+RETURNING reaction_count;
