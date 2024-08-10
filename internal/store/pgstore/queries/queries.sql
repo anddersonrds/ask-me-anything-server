@@ -34,3 +34,11 @@ INSERT INTO messages
     ( "room_id", "message" ) VALUES
     ( $1, $2 )
 RETURNING "id";
+
+-- name: ReactToMessage :one
+UPDATE messages
+SET
+    reaction_count = reaction_count + 1
+WHERE
+    id = $1
+RETURNING reaction_count;
