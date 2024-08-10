@@ -50,3 +50,10 @@ SET
 WHERE
     id = $1
 RETURNING reaction_count;
+
+-- name: MarkMessageAsAnswered :exec
+UPDATE messages
+SET
+    answered = true
+WHERE
+    id = $1;
