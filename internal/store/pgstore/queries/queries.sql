@@ -14,3 +14,10 @@ INSERT INTO rooms
     ( "theme" ) VALUES
     ( $1 )
 RETURNING "id";
+
+-- name: GetMessage :one
+SELECT
+    "id", "room_id", "message", "reaction_count", "answered"
+FROM messages
+WHERE
+    id = $1;
